@@ -22,3 +22,17 @@ var listMember = [
 ];
 
 int hitungDurasi(int m, int k ) => (k - m) > 0 ? (k - m) : 1; 
+
+Status cekStatus(String plat) {
+  for ( var member in listMember)
+    if (member.plat == plat) return member.status;
+    return Status.tidakTerdaftar;
+}
+
+int tarifDasar(int durasi) => durasi <= 1 ? 3000 : 3000 + (durasi - 1) * 2000;
+
+int hitungTotal(Tiket t ) {
+  int denda = t.hilang ? 20000 : 0;
+  if (cekStatus(t.plat) == Status.aktif) return 0 + denda;
+  return tarifDasar(hitungDurasi(t.masuk, t.keluar)) + denda; // // Kalau statusnya non-member atau kadaluarsa, hitung biaya durasi parkirnya ditambah denda
+}
