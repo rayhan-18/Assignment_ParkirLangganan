@@ -36,3 +36,11 @@ int hitungTotal(Tiket t ) {
   if (cekStatus(t.plat) == Status.aktif) return 0 + denda;
   return tarifDasar(hitungDurasi(t.masuk, t.keluar)) + denda; // // Kalau statusnya non-member atau kadaluarsa, hitung biaya durasi parkirnya ditambah denda
 }
+
+void main() {
+  print('1. Member ( 3 jam )         : Rp. ${hitungTotal(Tiket('B 1234 ABC', 8, 11))}');
+  print('2. Non-Member ( 3 jam )     : Rp. ${hitungTotal(Tiket('B 5678 DEF', 8, 11))}');
+  print('3. Non-Member + Hilang      : Rp. ${hitungTotal(Tiket('B 5678 DEF', 8, 9, true))}');
+  print('4. Expired Member ( 2 jam ) : Rp. ${hitungTotal(Tiket('B 5678 DEF', 8, 10))}');
+  print('5. Member + Hilang          : Rp. ${hitungTotal(Tiket('B 1234 ABC', 8, 9, true))}');
+}
