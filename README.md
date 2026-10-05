@@ -184,3 +184,13 @@ PROCEDURE hitungTotal(t)
 
 END PROCEDURE
 ```
+
+### 12. Tabel Traceability
+
+| ID          | Requirement                                                             | Business Rule | Fungsi Terkait       | Hasil yang Diharapkan                                                                       |
+| ----------- | ----------------------------------------------------------------------- | ------------- | -------------------- | ------------------------------------------------------------------------------------------- |
+| FR-01       | Sistem dapat memverifikasi status keanggotaan berdasarkan `listMember`. | BR-01, BR-04  | `cekStatus(plat)`    | Sistem dapat menentukan status kendaraan sebagai `aktif`, `expired`, atau `tidakTerdaftar`. |
+| FR-02       | Sistem dapat menghitung durasi parkir.                                  | BR-02         | `hitungDurasi(m, k)` | Durasi dihitung dari `jam keluar - jam masuk` dengan minimal 1 jam.                         |
+| FR-03       | Sistem dapat menghitung tarif dasar progresif untuk non-member.         | BR-02, BR-04  | `tarifDasar(durasi)` | Tarif jam pertama Rp 3.000 dan setiap jam berikutnya bertambah Rp 2.000.                    |
+| FR-04       | Sistem dapat menambahkan denda jika tiket hilang.                       | BR-03         | `hitungTotal(t)`     | Sistem menambahkan denda sebesar Rp 20.000 jika `hilang = true`.                            |
+| FR-01–FR-04 | Sistem menghasilkan total pembayaran parkir.                            | BR-01–BR-04   | `hitungTotal(t)`     | Total pembayaran dihitung berdasarkan status member, durasi, tarif, dan denda.              |
